@@ -5,7 +5,6 @@ import glob
 import os
 from threading import Thread
 import time
-from PIL import ImageTk, Image
 import tkinter.font as font
 
 class Main:
@@ -18,13 +17,20 @@ Created on Tue Apr 26 17:23:04 2022
                              Instituto Tecnológico de Costa Rica
                                 Ingenieria en Computadores
 Lenguaje: Python Versión 3.10
-Autor: Andres Blanco Coto (2022108841)
-Versión del programa: Spyder 5.3
-Fecha de la última modificación: 7/5/2022
-Proyecto de Programacion: Juego de Formula 1. 
+Autor: Andres Blanco Coto (2022108841) y Claudio Arce 
+Versión del programa: Visual Studio Code
+Fecha de la última modificación: 7/6/2022
+Proyecto de Programacion: Battleship. 
 
 *************************************************************************************
 
 """
+window = tk.Tk()  
+window.title("Battleship")
+window.minsize(width = 1200, height = 800)
+window.resizable(False, False)    
+
+
+window.mainloop()
 
 
