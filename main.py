@@ -38,82 +38,57 @@ fontplay = font.Font(family = "8BIT WONDER", size = 25)
 font_entry = font.Font(family = "8BIT WONDER", size = 15)
 font_user = font.Font(family = "8BIT WONDER", size = 10)
 
+#Canvas
+
+Inicio = tk.Canvas(main_window, 
+    width = 1200, 
+    height = 800, 
+    bg = "Gray")
+
+
 ##########################################################################################
 
 #Funciones
-def open_play_screen():
-    pass
-    
-def open_user_screen():
-    
-    main_window.iconify()
 
-    User_screen = tk.Toplevel()
-    User_screen.minsize(
-        width = 1200, 
-        height = 800)        
-    User_screen.title("Pantalla de Usuario")
-    User_screen.resizable(False,False)
+##########################################################################################
 
-    #Label de entrada de Usuario
-    Fondo_entry = tk.Label(
-        User_screen, 
-        width=50, 
-        height=15, 
-        bg="dimgray")
-    Fondo_entry.place(
-        x=600,
-        y=550,
-        anchor = "center")
 
-    #Entrada de Usuario
-    User_entry = tk.Entry(
+#Creacion del canvas
+
+Inicio.place(x=0,y=0)
+
+#Entrada de Usuario
+User_entry = tk.Entry(
         justify=tk.LEFT,
         width = 10,
         font = font_entry, 
         bd = 3)
-    User_entry.place(
+User_entry.place(
         x=600, 
         y=500,
         anchor = "center")
 
-    #Entrada de Contraseña
-    password_entry = tk.Entry(
+#Entrada de Contraseña
+password_entry = tk.Entry(
         justify=tk.LEFT,
         show = "*",
         width = 10,
         font = font_entry, 
         bd = 3)
-    password_entry.place(
+password_entry.place(
         x=600, 
         y=600,
         anchor = "center")
 
-    btn_play = tk.Button(
-        User_screen, 
-        text = "Play", 
-        font = fontplay, 
-        width = 10, 
-        height = 2, 
-        activebackground = "white", 
-        bg = "gray", 
-        fg = "white", 
-        command = open_play_screen)
-    btn_play.place(
-        x = 600, 
-        y = 600,
+Fondo_entry = tk.Label(
+        Inicio, 
+        width=50, 
+        height=15, 
+        bg="dimgray")
+Fondo_entry.place(
+        x=600,
+        y=550,
         anchor = "center")
-    
-##########################################################################################
-
-
-#Creacion del canvas
-Inicio = tk.Canvas(main_window, 
-    width = 1200, 
-    height = 800, 
-    bg = "Gray")
-Inicio.pack()
-
 
 #Fondo de la ventana
 Bg = tk.PhotoImage(file = "WarShip.png")
@@ -132,8 +107,7 @@ Play = tk.Button(
     height = 2, 
     activebackground = "white", 
     bg = "gray", 
-    fg = "white", 
-    command = open_user_screen)
+    fg = "white")
 Play.place(
     x = 600, 
     y = 600,
