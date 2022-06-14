@@ -55,7 +55,9 @@ Inicio = tk.Canvas(main_window,
 
 #Creacion del canvas
 
-Inicio.place(x=0,y=0)
+Inicio.place(
+    x=0,
+    y=0)
 
 #Entrada de Usuario
 User_entry = tk.Entry(
@@ -64,8 +66,8 @@ User_entry = tk.Entry(
         font = font_entry, 
         bd = 3)
 User_entry.place(
-        x=600, 
-        y=500,
+        x=200, 
+        y=400,
         anchor = "center")
 
 #Entrada de Contraseña
@@ -76,10 +78,10 @@ password_entry = tk.Entry(
         font = font_entry, 
         bd = 3)
 password_entry.place(
-        x=600, 
-        y=600,
+        x=1000, 
+        y=400,
         anchor = "center")
-
+#Fondo de los entrys
 Fondo_entry = tk.Label(
         Inicio, 
         width=50, 
@@ -92,11 +94,17 @@ Fondo_entry.place(
 
 #Fondo de la ventana
 Bg = tk.PhotoImage(file = "WarShip.png")
-Inicio.create_image(600, 400, image = Bg)
+Inicio.create_image(
+    600, 
+    400, 
+    image = Bg)
 
 #Logo de la ventana
 Logo = tk.PhotoImage(file = "WarShip_logo.png")
-Inicio.create_image(600, 300, image = Logo)
+Inicio.create_image(
+    600, 
+    300, 
+    image = Logo)
 
 #Boton
 Play = tk.Button(
