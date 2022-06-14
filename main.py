@@ -4,7 +4,6 @@ import math
 import glob
 import os
 from threading import Thread
-from PIL import ImageTk, Image
 import time
 import tkinter.font as font
 
@@ -117,11 +116,11 @@ Inicio.pack()
 
 
 #Fondo de la ventana
-Bg = ImageTk.PhotoImage(file = "WarShip.png")
+Bg = tk.PhotoImage(file = "WarShip.png")
 Inicio.create_image(600, 400, image = Bg)
 
 #Logo de la ventana
-Logo = ImageTk.PhotoImage(file = "WarShip_logo.png")
+Logo = tk.PhotoImage(file = "WarShip_logo.png")
 Inicio.create_image(600, 300, image = Logo)
 
 #Boton
@@ -139,71 +138,6 @@ Play.place(
     x = 600, 
     y = 600,
     anchor = "center")
-
-#Creacion ventana de Usuario
-"""
-    #Creacion del canvas
-    Inicio = tk.Canvas(
-        user_window, 
-        width = 1200, 
-        height = 800, 
-        bg = "Gray")
-    Inicio.pack()
-
-    #Fondo de la ventana
-    Bg = ImageTk.PhotoImage(file = "WarShip.png")
-    Inicio.create_image(
-        600, 
-        400, 
-        image = Bg)
-
-    #Logo de la ventana
-    Logo = ImageTk.PhotoImage(file = "WarShip_logo.png")
-    Inicio.create_image(
-        600, 
-        300, 
-        image = Logo)
-
-    #Label de entrada de Usuario
-    Fondo_entry = tk.Label(
-        user_window, 
-        width=50, 
-        height=15, 
-        bg="dimgray")
-    Fondo_entry.place(
-        x=600,
-        y=550,
-        anchor = "center")
-
-    #Entrada de Usuario
-    User_entry = tk.Entry(
-        justify=tk.LEFT,
-        width = 10,
-        font = font_entry, 
-        bd = 3)
-    User_entry.place(
-        x=600, 
-        y=500,
-        anchor = "center")
-
-    #Entrada de Contraseña
-    password_entry = tk.Entry(
-        justify=tk.LEFT,
-        show = "*",
-        width = 10,
-        font = font_entry, 
-        bd = 3)
-    password_entry.place(
-        x=600, 
-        y=600,
-        anchor = "center")
-
-    user_window.mainloop()
-"""
-
-
-
-
 
 
 
