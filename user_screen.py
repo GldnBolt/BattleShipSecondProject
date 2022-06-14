@@ -1,4 +1,3 @@
-from msilib.schema import IniFile
 import pygame, sys
 import tkinter as tk
 import math 
@@ -8,9 +7,6 @@ from threading import Thread
 from PIL import ImageTk, Image
 import time
 import tkinter.font as font
-
-#Importar ventanas
-import user_screen
 
 """
 
@@ -29,41 +25,25 @@ import user_screen
     *************************************************************************************
 
 """
+#Creacion de ventana
+user_window = tk.Tk()  
+user_window.title("WarShip Wars")
+user_window.minsize(width = 1200, height = 800)
+user_window.resizable(False, False)
 
-
-#Ventana
-main_window = tk.Tk()  
-main_window.title("WarShip Wars")
-main_window.minsize(width = 1200, height = 800)
-main_window.resizable(False, False)    
 
 #Fuente de texto
 fontplay = font.Font(family = "8BIT WONDER", size = 25)
 font_entry = font.Font(family = "8BIT WONDER", size = 15)
 font_user = font.Font(family = "8BIT WONDER", size = 10)
 
-##########################################################################################
-
-#Funciones
-
-def user_screen():
-    main_window.iconify()
-    main_window.withdraw(user_screen)
-    
-
-
-
-
-##########################################################################################
-
 #Creacion del canvas
 Inicio = tk.Canvas(
-    main_window, 
+    user_window, 
     width = 1200, 
     height = 800, 
     bg = "Gray")
 Inicio.pack()
-
 
 #Fondo de la ventana
 Bg = ImageTk.PhotoImage(file = "WarShip.png")
@@ -80,28 +60,10 @@ Inicio.create_image(
     image = Logo)
 
 #Boton
-Play = tk.Button(
-    main_window, 
-    text = "Play", 
-    font = fontplay, 
-    width = 10, 
-    height = 2, 
-    activebackground = "white", 
-    bg = "gray", 
-    fg = "white", 
-    command = user_screen)
-Play.place(
-    x = 600, 
-    y = 600,
-    anchor = "center")
-
-
-
-
-
-
-
-main_window.mainloop()
-
-
+User_entry = tk.Entry(
+    justify=tk.LEFT,
+    width = 10,
+    font = font_entry, 
+    bd = 3)
+User_entry.place(x=600, y=400)
 
