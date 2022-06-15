@@ -18,7 +18,7 @@ import tkinter.font as font
     Autor: Andres Blanco Coto (2022108841) y Claudio Arce (201058559)
     Versión del programa: Visual Studio Code
     Fecha de la última modificación: 14/6/2022
-    Proyecto de Programacion: WarShip Wars
+    Proyecto de Programacion: WarShip Battle
 
     *************************************************************************************
 
@@ -27,7 +27,7 @@ import tkinter.font as font
 
 #Ventana
 window = tk.Tk()  
-window.title("WarShip Wars")
+window.title("WarShip Battle")
 window.minsize(width = 1500, height = 1000)
 window.resizable(False, False)    
 
