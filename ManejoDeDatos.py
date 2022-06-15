@@ -6,7 +6,6 @@ def log_in(Usuario, Contraseña):
 
 def load_users(File, List):
     User = File.readline()[:-1]
-    print(User)
     if User == "Final":
         return List
     else:
