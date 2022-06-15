@@ -47,6 +47,7 @@ Dificultad_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Puntajes_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Juego_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Registro_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
+Help_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 
 #Imagenes
 ###################################################
@@ -90,6 +91,26 @@ password_entry.place(x=950, y=600, anchor = "center")
 
 
 #Funciones
+def help_screen():
+    Inicio_C.place_forget()
+    Register.place_forget()
+    Boton_Puntajes.place_forget()
+    Boton_About.place_forget()
+    Boton_Exit.place_forget()
+    Help_C.place(x=0, y=0)
+    Help_C.focus_force()
+
+    def back():
+        Help_C.place_forget()
+        Inicio_C.place(x=0, y=0)
+        Log_In.place(x = 550, y = 800, anchor = "center")
+        Register.place(x=950, y=800, anchor="center")
+        Boton_Puntajes.place(x=1500, y=1000, anchor = "se")
+        Boton_About.place(x=1500, y=0, anchor = "ne")
+        Boton_Exit.place(x=0, y=0, anchor = "nw")
+
+    btn_back = tk.Button(Help_C, text ="Back", width=5, height=2, font = font_user, command = back)
+    btn_back.place(x=1500,y=0, anchor = "ne")
 
 def about_screen():
     Inicio_C.place_forget()
@@ -252,6 +273,9 @@ Boton_About.place(x=1500, y=0, anchor = "ne")
 
 Boton_Exit = tk.Button(Inicio_C, text ="Exit", font=('Courier', 18, 'bold'), command = Exit)
 Boton_Exit.place(x=0, y=0, anchor = "nw")
+
+Boton_Help = tk.Button(Inicio_C, text ="Help", font=('Courier', 18, 'bold'), command = help_screen)
+Boton_Help.place(x=0, y=1000, anchor = "sw")
 
 Play = tk.Button(Dificultad_C, text="Play", font=font_play, width=15, height=2, activebackground="white", bg ="gray", fg="white", command=play_screen)
 
