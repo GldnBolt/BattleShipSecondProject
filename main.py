@@ -35,7 +35,7 @@ window.resizable(False, False)
 #Fuente de texto
 font_dfcltd = font.Font(family = "8BIT WONDER", size = 20)
 font_register = font.Font(family = "8BIT WONDER", size = 20)
-font_entry = font.Font(family = "8BIT WONDER", size = 15)
+font_entry = font.Font(family = "8BIT WONDER", size = 20)
 font_user = font.Font(family = "8BIT WONDER", size = 15)
 font_cnt = font.Font(family = "8BIT WONDER", size = 10)
 font_play = font.Font(family = "8BIT WONDER", size = 25)
@@ -75,11 +75,11 @@ Inicio_C.place(x=0, y=0)
 
 #Entrada de Usuario
 User_entry = tk.Entry(Inicio_C, justify=tk.LEFT, width = 10, font = font_entry, bd = 3)
-User_entry.place(x=400, y=600, anchor = "center")
+User_entry.place(x=550, y=600, anchor = "center")
 
 #Entrada de Contraseña
-password_entry = tk.Entry(Inicio_C, justify=tk.LEFT, show ="*", width = 10, font = font_entry, bd = 3)
-password_entry.place(x=1100, y=600, anchor = "center")
+password_entry = tk.Entry(Inicio_C, justify=tk.LEFT, show ="*", width = 12, font = font_entry, bd = 3)
+password_entry.place(x=950, y=600, anchor = "center")
 
 ##########################################################################################
 
