@@ -24,7 +24,7 @@ import ManejoDeDatos
     *************************************************************************************
 
 """
-ManejoDeDatos.log_in("Hola", "Hola")
+
 
 #Ventana
 window = tk.Tk()  

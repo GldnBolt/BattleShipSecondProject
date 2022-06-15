@@ -1,8 +1,16 @@
-def log_in(Usuario, Contraseña):
+def log_in(Usuario, Password):
     Users = open("Files\LogIn_Data.txt", 'r')
     Users_Data = load_users(Users, [])
     Users.close()
-    print(Users_Data)
+    if Usuario in Users_Data:
+        Index = Users_Data.index(Usuario) 
+        if Users_Data[Index + 1] == Password:
+            return True
+        else:
+            return 1
+    else:
+        return 0
+
 
 def load_users(File, List):
     User = File.readline()[:-1]
