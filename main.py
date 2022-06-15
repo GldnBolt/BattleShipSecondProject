@@ -51,23 +51,26 @@ Registro_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 #Imagenes
 ###################################################
 
+#Imagen de registro
+Reg_image = tk.PhotoImage(file = "Images\Bg\Register_bg.png")
+
 #Imagen de About
-About_Image = tk.PhotoImage(file = "Bar.png")
+About_Image = tk.PhotoImage(file = "Images\Bar.png")
 About_C.create_image(750, 500, image = About_Image)
 
 #Fondo de la ventana
-Bg = tk.PhotoImage(file = "WarShip.png")
+Bg = tk.PhotoImage(file = "Images\Bg\WarShip.png")
 Inicio_C.create_image(750, 500, image = Bg)
 
 #Logo de la ventana
-Logo = tk.PhotoImage(file = "WarShip_logo.png")
+Logo = tk.PhotoImage(file = "Images\WarShip_logo.png")
 Inicio_C.create_image(750, 300, image = Logo)
 
 #Imagenes de los barcos
-Ship_1 = tk.PhotoImage(file = "Ship_1.png")
-Ship_2 = tk.PhotoImage(file = "Ship_2.png")
-Ship_3 = tk.PhotoImage(file = "Ship_3.png")
-Ship_4 = tk.PhotoImage(file = "Ship_4.png")
+#Ship_1 = tk.PhotoImage(file = "C:\Users\Xpc\Documents\GitHub\BattleShipSecondProject\Images\Ships\Ship_1.png")
+Ship_2 = tk.PhotoImage(file = "Images\Ships\Ship_2.png")
+Ship_3 = tk.PhotoImage(file = "Images\Ships\Ship_3.png")
+Ship_4 = tk.PhotoImage(file = "Images\Ships\Ship_4.png")
 #Ship_5 = tk.PhotoImage(file = "Ship_5.png")
 ###################################################
 
@@ -118,16 +121,16 @@ def reg_screen():
     Registro_C.place(x=0, y=0)
     Registro_C.focus_force()
 
+    Registro_C.create_image(750,500, image = Reg_image)
+
     Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    Name_E.place(x=200, y=600, anchor="center")
+    Name_E.place(x=750, y=250, anchor="center")
     L_Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    L_Name_E.place(x=400, y=600, anchor="center")
+    L_Name_E.place(x=750, y=450, anchor="center")
     User_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    User_E.place(x=600, y=600, anchor="center")
+    User_E.place(x=750, y=650, anchor="center")
     Password_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    Password_E.place(x=800, y=600, anchor="center")
-    Email_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    Email_E.place(x=1000, y=600, anchor="center")
+    Password_E.place(x=750, y=850, anchor="center")
 
     def back():
         Registro_C.place_forget()
