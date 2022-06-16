@@ -1,11 +1,44 @@
-def save_game(GRID):
-    GRID_F = open("JuegoGuardado.text", 'w')
-    save_game_aux(GRID, GRID_F, 0)
-    GRID_F.close()
 
-def save_game_aux(GRID, GRID_F, i):
-    if GRID == []:
-        return 
-    else:
-        GRID_F.write(str(GRID[0]+"\n"))
-        return save_game_aux(GRID[1:], GRID_F, i+1)
+GRID_transformada = []
+
+def escribir_file(data):
+    file = open("./JuegoGuardado.txt", "a")
+    file.write(data)
+    file.close()
+
+
+def read_game():
+    file = open("./JuegoGuardado.txt", "r")
+    info = file.read()
+    info = info.split("\n")
+    file.close()
+    return info
+
+def matrix_fix(GRID):
+    aux = []
+    for i in GRID:
+        if i != []:
+            aux += [i]
+    return aux
+
+def transformar_GRID(lista):
+    global GRID_transformada
+    lista_aux = []
+    for i in lista:
+        for j in i:
+                lista_aux += [int(j)]
+
+        GRID_transformada += [lista_aux]
+        lista_aux = []
+    GRID_transformada = matrix_fix(GRID_transformada)
+    print(GRID_transformada)
+        
+        
+def guardar(m):
+    for i in m:
+        for j in i:
+            escribir_file(str(j))
+        escribir_file("\n")
+
+
+transformar_GRID(read_game())
