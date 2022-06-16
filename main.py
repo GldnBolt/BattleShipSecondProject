@@ -24,6 +24,11 @@ import ManejoDeDatos
     *************************************************************************************
 
 """
+#Globales
+
+Ships_Cuant = [1, 1, 0]
+Ships_player = []
+Ships_Compu = []
 
 
 #Ventana
@@ -50,12 +55,19 @@ Juego_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Registro_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Help_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 
+Player_Grid_C = tk.Canvas(Juego_C, width = 500, height = 500, bg ="Gray")
+Player_Grid_C.grid()
+Player_Grid_C.grid_columnconfigure(10)
+Player_Grid_C.grid_rowfigure(10)
+
+Computer_Grid_C = tk.Canvas(Juego_C, width=500, height=500, bg="Gray")
+
 #Imagenes
 ###################################################
 
 #Imagen de registro
 Reg_image = tk.PhotoImage(file = "Images\Bg\Register_bg.png")
-
+Registro_C.create_image(750,500, image = Reg_image)
 #Imagen de About
 About_Image = tk.PhotoImage(file = "Images\Bar.png")
 About_C.create_image(750, 500, image = About_Image)
@@ -67,6 +79,18 @@ Inicio_C.create_image(750, 500, image = Bg)
 #Logo de la ventana
 Logo = tk.PhotoImage(file = "Images\WarShip_logo.png")
 Inicio_C.create_image(750, 300, image = Logo)
+
+#Area de Juego
+Game_Board_Img = tk.PhotoImage(file = "Images\Bg\GameBoard.png")
+Juego_C.create_image(750, 500, image = Game_Board_Img)
+
+Grid1 = tk.PhotoImage(file="Images\Bg\Grid1.png")
+Player_Grid_C.create_image(250, 250, image=Grid1)
+
+Grid2 = tk.PhotoImage(file="Images\Bg\Grid2.png")
+Computer_Grid_C.create_image(250, 250, image=Grid2)
+
+
 
 #Imagenes de los barcos
 #Ship_1 = tk.PhotoImage(file = "C:\Users\Xpc\Documents\GitHub\BattleShipSecondProject\Images\Ships\Ship_1.png")
@@ -88,7 +112,7 @@ password_entry.place(x=950, y=600, anchor = "center")
 
 ##########################################################################################
 
-#Iniciar Pygame
+
 
 
 #Funciones
@@ -143,8 +167,6 @@ def reg_screen():
     Registro_C.place(x=0, y=0)
     Registro_C.focus_force()
 
-    Registro_C.create_image(750,500, image = Reg_image)
-
     Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
     Name_E.place(x=750, y=250, anchor="center")
     L_Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
@@ -176,22 +198,12 @@ def dif_screen():
     Dificultad_C.place(x=0, y=0)
     Dificultad_C.focus_force()
 
-    # #Barco 1x1
-    # Dificultad_c.create_image(600, 150, image = Ship_1)
-    #
-    # OPTIONS = [1,2,3,4]
-    # variable = tk.IntVar(Dificultad_c)
-    # variable.set("Cantidad de Barcos Tipo 1")
-    # Ship_1_menu = tk.OptionMenu(Dificultad_c, variable, *OPTIONS)
-    # Ship_1_menu.config(width=25, height=2, activebackground="dimgray", bg = "white", font = font_cnt)
-    # Ship_1_menu.place(x=900,y=150, anchor = "center")
-
     #Barco 1x2
     Dificultad_C.create_image(600, 250, image = Ship_2)
 
     OPTIONS = [1,2,3,4]
     variable = tk.IntVar(Dificultad_C)
-    variable.set("Cantidad de Barcos Tipo 2")
+    variable.set("Cantidad de Barcos Tipo 1")
     Ship_2_menu = tk.OptionMenu(Dificultad_C, variable, *OPTIONS)
     Ship_2_menu.config(width=25, height=2, activebackground="dimgray", bg = "white", font = font_cnt)
     Ship_2_menu.place(x=900,y=250, anchor = "center")
@@ -201,7 +213,7 @@ def dif_screen():
 
     OPTIONS = [1,2,3,4]
     variable = tk.IntVar(Dificultad_C)
-    variable.set("Cantidad de Barcos Tipo 3")
+    variable.set("Cantidad de Barcos Tipo 2")
     Ship_3_menu = tk.OptionMenu(Dificultad_C, variable, *OPTIONS)
     Ship_3_menu.config(width=25, height=2, activebackground="dimgray", bg = "white", font = font_cnt)
     Ship_3_menu.place(x=900,y=350, anchor = "center")
@@ -211,20 +223,10 @@ def dif_screen():
 
     OPTIONS = [1,2,3,4]
     variable = tk.IntVar(Dificultad_C)
-    variable.set("Cantidad de Barcos Tipo 4")
+    variable.set("Cantidad de Barcos Tipo 3")
     Ship_4_menu = tk.OptionMenu(Dificultad_C, variable, *OPTIONS)
     Ship_4_menu.config(width=25, height=2, activebackground="dimgray", bg = "white", font = font_cnt)
     Ship_4_menu.place(x=900,y=450, anchor = "center")
-
-    #Barco 1x5
-    #Dificultad_c.create_image(600, 550, image = Ship_5)
-
-    # OPTIONS = [1,2,3,4]
-    # variable = tk.IntVar(Dificultad_c)
-    # variable.set("Cantidad de Barcos Tipo 5")
-    # Ship_5_menu = tk.OptionMenu(Dificultad_c, variable, *OPTIONS)
-    # Ship_5_menu.config(width=25, height=2, activebackground="dimgray", bg = "white", font = font_cnt)
-    # Ship_5_menu.place(x=900,y=550, anchor = "center")
 
     def back():
         Dificultad_C.place_forget()
@@ -245,13 +247,17 @@ def play_screen():
     Dificultad_C.place_forget()
     Juego_C.place(x=0, y=0)
 
+    Player_Grid_C.place(x=248, y=294)
+    Computer_Grid_C.place(x=820, y=294)
+
+
+
     def back():
         Juego_C.place_forget()
         dif_screen()
 
     btn_back = tk.Button(Juego_C, text="Back", width=5, height=2, font=font_user, command=back)
     btn_back.place(x=1500, y=0, anchor="ne")
-
 
 
 
