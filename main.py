@@ -47,6 +47,7 @@ font_entry = font.Font(family = "8BIT WONDER", size = 20)
 font_user = font.Font(family = "8BIT WONDER", size = 15)
 font_cnt = font.Font(family = "8BIT WONDER", size = 10)
 font_play = font.Font(family = "8BIT WONDER", size = 25)
+font_r = font.Font(family = "8BIT WONDER", size = 10)
 
 #Creacion de los canvas
 Inicio_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
@@ -90,6 +91,11 @@ Puntajes_C.create_image(750, 500, image = Podio_image)
 #Area de Juego
 Game_Board_Img = tk.PhotoImage(file = "Images\Bg\GameBoard.png")
 Juego_C.create_image(750, 500, image = Game_Board_Img)
+
+#Imagenes Flechas
+UP_a = tk.PhotoImage(file = r"Images\Bg\Up_arrow.png")
+
+DOWN_a = tk.PhotoImage(file = r"Images\Bg\Down_arrow.png")
 
 Grid1 = tk.PhotoImage(file="Images\Bg\Grid1.png")
 Player_Grid_C.create_image(250, 250, image=Grid1)
@@ -248,6 +254,7 @@ def dif_screen():
     Dificultad_C.create_image(600, 350, image = Ship_3)
 
     OPTIONS = [1,2,3,4]
+
     variable = tk.IntVar(Dificultad_C)
     variable.set("Cantidad de Barcos Tipo 2")
     Ship_3_menu = tk.OptionMenu(Dificultad_C, variable, *OPTIONS)
@@ -258,6 +265,7 @@ def dif_screen():
     Dificultad_C.create_image(600, 450, image = Ship_4)
 
     OPTIONS = [1,2,3,4]
+
     variable = tk.IntVar(Dificultad_C)
     variable.set("Cantidad de Barcos Tipo 3")
     Ship_4_menu = tk.OptionMenu(Dificultad_C, variable, *OPTIONS)
@@ -309,6 +317,24 @@ def puntajes():
     Puntajes_C.place(x=0, y=0)
     Puntajes_C.focus_force()
 
+    def sel():
+        selection = "You selected the option " + str(var.get())
+        tk.Label.config(text = selection)
+
+    var = tk.IntVar()
+
+    R1 = tk.Radiobutton(Puntajes_C, text="Nombre", padx = 5, pady =5, font = font_r, variable = var, value=1)
+    R1.place(x=550,y=850, anchor = "center")
+
+    R2 = tk.Radiobutton(Puntajes_C, text="Puntaje", padx = 5, pady =5, font = font_r, variable = var, value=2)
+    R2.place(x=700,y=850, anchor = "center")
+
+    btn_asc_des = tk.Button(Puntajes_C, image = DOWN_a, width = 50, height=45)
+    btn_asc_des.place(x = 850, y = 850, anchor = "center")
+
+    btn_asc_asc = tk.Button(Puntajes_C, image = UP_a, width = 50, height=45)
+    btn_asc_asc.place(x = 950, y = 850, anchor = "center")
+
     def back():
         Puntajes_C.place_forget()
         Inicio_C.place(x=0, y=0)
@@ -320,6 +346,8 @@ def puntajes():
 
     btn_back = tk.Button(Puntajes_C, text ="Back", width=5, height=2, font = font_user, command = back)
     btn_back.place(x=1500,y=0, anchor = "ne")
+
+
 
 
     
