@@ -453,6 +453,21 @@ def puntajes():
             
 
 def print_doc():
+    print("""
+
+    *************************************************************************************
+                           
+                             Instituto Tecnológico de Costa Rica
+                                Ingenieria en Computadores
+    Lenguaje: Python Versión 3.10
+    Autores: Andres Blanco Coto (2022108841) y Claudio Arce (201058559)
+    Versión del programa: Visual Studio Code
+    Fecha de la última modificación: 14/6/2022
+    Proyecto de Programacion: WarShip Battle
+
+    *************************************************************************************
+
+""")
     print(select_screen.__doc__)
     print(reg_screen.__doc__)
     print(ManejoDeDatos.reg_user.__doc__)
