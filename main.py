@@ -8,6 +8,7 @@ from threading import Thread
 import time
 import tkinter.font as font
 import ManejoDeDatos, Saves
+import vlc
 
 
 """
@@ -31,13 +32,16 @@ import ManejoDeDatos, Saves
 Ships_Cuant = [1, 1, 0]
 Ships_player = []
 Ships_Compu = []
-
+playing = True
 
 #Ventana
 window = tk.Tk()  
 window.title("WarShip Battle")
 window.minsize(width = 1500, height = 1000)
 window.resizable(False, False)    
+
+playsound = True
+
 
 
 #Fuente de texto
@@ -347,10 +351,16 @@ def puntajes():
     btn_back = tk.Button(Puntajes_C, text ="Back", width=5, height=2, font = font_user, command = back)
     btn_back.place(x=1500,y=0, anchor = "ne")
 
+#Sonido
+sound = vlc.MediaPlayer('soundtrack.mp3')
+def bg_sound():
+    while playing:
+        sound.play()
+        
+def print_doc():
+    pass
 
-
-
-    
+print_doc()
 ##########################################################################################
 
 #Botones

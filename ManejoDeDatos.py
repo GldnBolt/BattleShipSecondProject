@@ -57,5 +57,42 @@ def val_empt_str_aux(Str, Str2, n , i):
     else:
         return val_empt_str_aux(Str, Str2+" ", n, i+1)
 
+#Ordenamiento de posiciones del salon de la fama
 
+def quick_sort(lista):
+    Menores = []
+    Iguales = []
+    Mayores = []
+    if len(lista) <= 1:
+        return lista
+    Pivote = lista [-1]
+    partir(lista, 0 ,len(lista), Pivote, Menores, Iguales, Mayores)
+    Ret = quick_sort(Menores)
+    Ret.extend(Iguales)
+    Ret.extend(quick_sort(Mayores))
+    return Ret
+def partir(lista, i, n, Pivote, Menores, Iguales, Mayores):
+    if i == n:
+        return Menores, Iguales, Mayores
+    if lista[i] < Pivote:
+        Menores.append(lista[i])
+    elif lista[i] > Pivote:
+        Mayores.append(lista[i])
+    elif lista[i] == Pivote:
+        Iguales.append(lista[i])
+    return partir(lista, i + 1, n, Pivote, Menores, Iguales, Mayores)
+
+def insert_sort_aux(lista,i,n):
+    if i==n:
+        return lista
+    Aux = lista[i]
+    j = incluye_orden(lista,i,Aux)
+    lista[j] = Aux
+    return insert_sort_aux(lista, i+1,n)
+
+def incluye_orden(lista,j,Aux):
+    if j<=0 or lista[j-1]<=Aux:
+        return j
+    lista[j]=lista[j-1]
+    return incluye_orden(lista, j-1, Aux)
 
