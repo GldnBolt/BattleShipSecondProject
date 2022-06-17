@@ -8,7 +8,7 @@ from threading import Thread
 import time
 import tkinter.font as font
 import ManejoDeDatos, Saves
-import vlc
+#import vlc
 
 
 """
@@ -29,16 +29,13 @@ import vlc
 
 #Globales
 
+
+
 Ships_Cuant = [1, 1, 0]
 Ships_player = []
 Ships_Compu = []
 playing = True
-
-sound = vlc.MediaPlayer('soundtrack.mp3')
-#Sonido
-def bg_sound():
-    sound.play()
-bg_sound()
+#sound = vlc.MediaPlayer('soundtrack.mp3')
 
 #Ventana
 window = tk.Tk()  
@@ -366,6 +363,58 @@ def puntajes():
     Puntajes_C.place(x=0, y=0)
     Puntajes_C.focus_force()
 
+    Scores = ManejoDeDatos.load_scores()
+    Scores = ManejoDeDatos.quick_sort(Scores)
+    Scores_str = ManejoDeDatos.build_scores_str(Scores, "")
+    Scores_Lbl = tk.Label(Puntajes_C, text=Scores_str, font=('Courier', 20, 'bold'), background="Grey", justify="lef",
+                          height="11", width="20")
+    Scores_Lbl.place(x=500, y=200, anchor="nw")
+
+    Descend = True
+
+    def sort_scores_up():
+        nonlocal Scores
+        nonlocal Descend
+        print(R1.getvar())
+        print(R2.getVar())
+        if R1.getvar() == 1:
+            if Descend == True:
+                return
+            else:
+                Scores = ManejoDeDatos.insertionSort(Scores)
+                Scores_str = ManejoDeDatos.build_scores_str(Scores, "")
+                Scores_Lbl.config(text=Scores_str)
+                Descend = True
+        elif R2.value == 2:
+            if Descend == True:
+                return
+            else:
+                Scores = ManejoDeDatos.quick_sort(Scores)
+                Scores_str = ManejoDeDatos.build_scores_str(Scores, "")
+                Scores_Lbl.config(text=Scores_str)
+                Descend = True
+
+    def sort_scores_down():
+        nonlocal Scores
+        nonlocal Descend
+        if R1.value == 1:
+            if Descend == False:
+                return
+            else:
+                Scores = ManejoDeDatos.inverse(ManejoDeDatos.quick_sort(Scores))
+                Scores_str = ManejoDeDatos.build_scores_str(Scores, "")
+                Scores_Lbl.config(text=Scores_str)
+                Descend = False
+
+        elif R2.value == 2:
+            if Descend == False:
+                return
+            else:
+                Scores = ManejoDeDatos.insertionSort(Scores)
+                Scores_str = ManejoDeDatos.build_scores_str(Scores, "")
+                Scores_Lbl.config(text=Scores_str)
+                Descend =False
+
     def sel():
         selection = "You selected the option " + str(var.get())
         tk.Label.config(text = selection)
@@ -377,11 +426,12 @@ def puntajes():
 
     R2 = tk.Radiobutton(Puntajes_C, text="Puntaje", padx = 5, pady =5, font = font_r, variable = var, value=2)
     R2.place(x=700,y=850, anchor = "center")
+    R2.invoke()
 
-    btn_asc_des = tk.Button(Puntajes_C, image = DOWN_a, width = 50, height=45)
+    btn_asc_des = tk.Button(Puntajes_C, image = DOWN_a, width = 50, height=45, command=sort_scores_down)
     btn_asc_des.place(x = 850, y = 850, anchor = "center")
 
-    btn_asc_asc = tk.Button(Puntajes_C, image = UP_a, width = 50, height=45)
+    btn_asc_asc = tk.Button(Puntajes_C, image = UP_a, width = 50, height=45, command=sort_scores_up)
     btn_asc_asc.place(x = 950, y = 850, anchor = "center")
 
     def back():
@@ -396,8 +446,12 @@ def puntajes():
     btn_back = tk.Button(Puntajes_C, text ="Back", width=5, height=2, font = font_user, command = back)
     btn_back.place(x=1500,y=0, anchor = "ne")
 
-
+#Sonido
+#def bg_sound():
+#    sound.play()
+#bg_sound()
             
+
 def print_doc():
     print("""
 
