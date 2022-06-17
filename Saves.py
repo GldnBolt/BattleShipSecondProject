@@ -12,6 +12,7 @@ def read_game():
     info = file.read()
     info = info.split("\n")
     file.close()
+    info = transformar_GRID(info)
     return info
 
 def matrix_fix(GRID):
@@ -22,7 +23,7 @@ def matrix_fix(GRID):
     return aux
 
 def transformar_GRID(lista):
-    global GRID_transformada
+    GRID_transformada = []
     lista_aux = []
     for i in lista:
         for j in i:
@@ -31,7 +32,7 @@ def transformar_GRID(lista):
         GRID_transformada += [lista_aux]
         lista_aux = []
     GRID_transformada = matrix_fix(GRID_transformada)
-    print(GRID_transformada)
+    return GRID_transformada
         
         
 def guardar(m):
@@ -41,4 +42,4 @@ def guardar(m):
         escribir_file("\n")
 
 
-transformar_GRID(read_game())
+#transformar_GRID(read_game())

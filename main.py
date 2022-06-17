@@ -6,7 +6,7 @@ import os
 from threading import Thread
 import time
 import tkinter.font as font
-import ManejoDeDatos
+import ManejoDeDatos, Saves
 
 
 """
@@ -24,6 +24,13 @@ import ManejoDeDatos
     *************************************************************************************
 
 """
+
+
+hola = Saves.read_game()
+print(hola)
+
+
+
 #Globales
 
 Ships_Cuant = [1, 1, 0]
@@ -55,12 +62,8 @@ Juego_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Registro_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 Help_C = tk.Canvas(window, width = 1500, height = 1000, bg ="Gray")
 
-Player_Grid_C = tk.Canvas(Juego_C, width = 500, height = 500, bg ="Gray")
-Player_Grid_C.grid()
-Player_Grid_C.grid_columnconfigure(10)
-Player_Grid_C.grid_rowfigure(10)
-
-Computer_Grid_C = tk.Canvas(Juego_C, width=500, height=500, bg="Gray")
+Player_Grid_C = tk.Canvas(Juego_C, width = 500, height = 500, bg ="Gray", bd=0)
+Computer_Grid_C = tk.Canvas(Juego_C, width=500, height=500, bg="Gray", bd=0)
 
 #Imagenes
 ###################################################
