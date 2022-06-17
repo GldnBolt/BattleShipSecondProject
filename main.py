@@ -179,14 +179,18 @@ def reg_screen():
     Registro_C.place(x=0, y=0)
     Registro_C.focus_force()
 
-    Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    Name_E.place(x=750, y=250, anchor="center")
-    L_Name_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    L_Name_E.place(x=750, y=450, anchor="center")
     User_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    User_E.place(x=750, y=650, anchor="center")
+    User_E.place(x=1040, y=300, anchor="center")
     Password_E = tk.Entry(Registro_C, justify=tk.LEFT, width=10, font=font_entry, bd=3)
-    Password_E.place(x=750, y=850, anchor="center")
+    Password_E.place(x=1040, y=500, anchor="center")
+
+    def validar():
+        Usuario_n = User_E.get()
+        Password_n = Password_E.get()
+        if ManejoDeDatos.valid_reg(Usuario_n) == True:
+            return messagebox.showinfo(tittle=None, message="El usuario, ya existe, por favor, cambielo.")
+        else:
+            return 1
 
     def back():
         Registro_C.place_forget()
@@ -196,6 +200,9 @@ def reg_screen():
         Boton_Puntajes.place(x=1500, y=1000, anchor = "se")
         Boton_About.place(x=1500, y=0, anchor = "ne")
         Boton_Exit.place(x=0, y=0, anchor = "nw")
+
+    ok_btn = tk.Button(Registro_C, text = "OK", width = 7, height = 3, font = font_play, command = validar)
+    ok_btn.place(x=450, y=330)
 
     btn_back = tk.Button(Registro_C, text ="Back", width=5, height=2, font = font_user, command = back)
     btn_back.place(x=1500,y=0, anchor = "ne")
