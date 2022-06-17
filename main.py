@@ -117,9 +117,7 @@ password_entry.place(x=950, y=600, anchor = "center")
 def val_usuario():
     User = User_entry.get()
     Password = password_entry.get()
-    print(User, Password)
     Val = ManejoDeDatos.log_in(User, Password)
-    print(Val)
     if Val== 1:
         dif_screen()
     elif Val == 2:
