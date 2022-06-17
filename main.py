@@ -399,7 +399,11 @@ def puntajes():
 
             
 def print_doc():
-    pass
+    print(select_screen.__doc__)
+    print(reg_screen.__doc__)
+    print(ManejoDeDatos.reg_user.__doc__)
+    print(ManejoDeDatos.load_users.__doc__)
+    print(ManejoDeDatos.log_in.__doc__)
 
 print_doc()
 ##########################################################################################
