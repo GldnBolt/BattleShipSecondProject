@@ -67,7 +67,7 @@ Computer_Grid_C = tk.Canvas(Juego_C, width=500, height=500, bg="Gray", bd=0)
 Reg_image = tk.PhotoImage(file = "Images\Bg\Register_bg.png")
 Registro_C.create_image(750,500, image = Reg_image)
 #Imagen de About
-About_Image = tk.PhotoImage(file = "Images\Bar.png")
+About_Image = tk.PhotoImage(file = "Images\Bg\About_image.png")
 About_C.create_image(750, 500, image = About_Image)
 
 #Fondo de la ventana
@@ -77,6 +77,10 @@ Inicio_C.create_image(750, 500, image = Bg)
 #Logo de la ventana
 Logo = tk.PhotoImage(file = "Images\WarShip_logo.png")
 Inicio_C.create_image(750, 300, image = Logo)
+
+#Imagen de Help
+Help_image = tk.PhotoImage(file = "Images\Bg\Help_image.png")
+Help_C.create_image(750,500, image = Help_image)
 
 #Area de Juego
 Game_Board_Img = tk.PhotoImage(file = "Images\Bg\GameBoard.png")
