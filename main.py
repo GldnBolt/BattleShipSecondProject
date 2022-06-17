@@ -33,7 +33,12 @@ Ships_Cuant = [1, 1, 0]
 Ships_player = []
 Ships_Compu = []
 playing = True
+
 sound = vlc.MediaPlayer('soundtrack.mp3')
+#Sonido
+def bg_sound():
+    sound.play()
+bg_sound()
 
 #Ventana
 window = tk.Tk()  
@@ -352,10 +357,7 @@ def puntajes():
     btn_back = tk.Button(Puntajes_C, text ="Back", width=5, height=2, font = font_user, command = back)
     btn_back.place(x=1500,y=0, anchor = "ne")
 
-#Sonido
-def bg_sound():
-    sound.play()
-bg_sound()
+
             
 def print_doc():
     pass
