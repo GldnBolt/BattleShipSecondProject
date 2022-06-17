@@ -140,11 +140,24 @@ password_entry.place(x=950, y=600, anchor = "center")
 
 #Funciones
 def val_usuario():
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: val_usuario()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: Usuario
+    Restricciones: No tiene
+    Salidas: Ventana de barcos, mensajes de error.
+    """
     User = User_entry.get()
     Password = password_entry.get()
     Val = ManejoDeDatos.log_in(User, Password)
     if Val== 1:
-        dif_screen()
+        select_screen()
     elif Val == 2:
         messagebox.showinfo(tittle=None, message="Contraseña Incorrecta")
     else:
@@ -193,6 +206,19 @@ def about_screen():
     btn_back.place(x=1500,y=0, anchor = "ne")
 
 def reg_screen():
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: reg_screen()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: No tiene
+    Restricciones: No tiene
+    Salidas: Mensajes dependiendo de lo que necesite
+    """
     Inicio_C.place_forget()
     Register.place_forget()
     Boton_Puntajes.place_forget()
@@ -241,7 +267,20 @@ def reg_screen():
     btn_back.place(x=1500,y=0, anchor = "ne")
 
 
-def dif_screen():
+def select_screen():
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: select_screen()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: No tiene
+    Restricciones: No tiene
+    Salidas: Pantalla de seleccion de cantidad de barcos.
+    """
     Inicio_C.place_forget()
     Register.place_forget()
     Boton_Puntajes.place_forget()
@@ -308,7 +347,7 @@ def play_screen():
 
     def back():
         Juego_C.place_forget()
-        dif_screen()
+        select_screen()
 
     btn_back = tk.Button(Juego_C, text="Back", width=5, height=2, font=font_user, command=back)
     btn_back.place(x=1500, y=0, anchor="ne")

@@ -1,4 +1,17 @@
 def log_in(Usuario, Password):
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: log_in()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: Usuario, Password
+    Restricciones: Que no sean vacios
+    Salidas: 1, 2, 3.
+    """
     Users = open("Files\LogIn_Data.txt", 'r')
     Users_Data = load_users(Users, [])
     Users.close()
@@ -21,6 +34,19 @@ def valid_reg(Usuario):
         return False
 
 def load_users(File, List):
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: load_users()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: File, list
+    Restricciones: No tiene
+    Salidas: No hay, solo carga los usuarios en el archivo.
+    """
     User = File.readline()[:-1]
     if User == "Final":
         return List
@@ -31,6 +57,19 @@ def load_users(File, List):
         return load_users(File, List)
 
 def reg_user(User, Password):
+    """
+    Instituto Tecnológico de Costa Rica
+    Ingenieria en Computadores
+
+    Función: reg_user()
+    Lenguaje: Python 3.9.9
+    Autor: Andres Blanco Coto (2022108841) y Claudio Arce Cascante (201058559)
+    Version: 7.0
+    Fecha de última modificación: 17/6/2022
+    Entrada: Usuario, Password
+    Restricciones: Que no sean vacios
+    Salidas: No tiene.
+    """
     Users = open("Files\LogIn_Data.txt", 'r')
     Users_Data = load_users(Users, [])
     Users.close()
