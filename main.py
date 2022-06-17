@@ -200,6 +200,7 @@ def reg_screen():
             messagebox.showinfo(tittle=None, message="Usuario Registrado")
             back()
             return ManejoDeDatos.reg_user(User_n, Password_n)
+        
 
     def back():
         Registro_C.place_forget()
