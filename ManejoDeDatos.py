@@ -13,6 +13,15 @@ def log_in(Usuario, Password):
     else:
         return 3
 
+def valid_reg(Usuario):
+    Users = open("Files\LogIn_Data.txt", 'r')
+    Users_Data = load_users(Users, [])
+    Users.close()
+    print(Users_Data)
+    if Usuario in Users_Data:
+        return True
+    else: 
+        return False
 
 def load_users(File, List):
     User = File.readline()[:-1]
