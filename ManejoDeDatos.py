@@ -17,7 +17,6 @@ def valid_reg(Usuario):
     Users = open("Files\LogIn_Data.txt", 'r')
     Users_Data = load_users(Users, [])
     Users.close()
-    print(Users_Data)
     if Usuario in Users_Data:
         return True
     else: 

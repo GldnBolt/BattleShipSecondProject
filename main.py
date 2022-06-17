@@ -188,9 +188,10 @@ def reg_screen():
         Usuario_n = User_E.get()
         Password_n = Password_E.get()
         if ManejoDeDatos.valid_reg(Usuario_n) == True:
-            return messagebox.showinfo(tittle=None, message="El usuario, ya existe, por favor, cambielo.")
+            messagebox.showinfo(tittle=None, message="El usuario, ya existe, por favor, cambielo.")
         else:
-            return 1
+            messagebox.showinfo(tittle=None, message="Usuario Registrado")
+            return ManejoDeDatos.reg_user(Usuario_n, Password_n)
 
     def back():
         Registro_C.place_forget()
