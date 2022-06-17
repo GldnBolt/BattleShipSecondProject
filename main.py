@@ -25,7 +25,6 @@ import ManejoDeDatos, Saves
     *************************************************************************************
 
 """
-ManejoDeDatos.reg_user("Idiota", "1234")
 
 #Globales
 
@@ -185,13 +184,22 @@ def reg_screen():
     Password_E.place(x=1040, y=500, anchor="center")
 
     def validar():
-        Usuario_n = User_E.get()
+        User_n = User_E.get()
         Password_n = Password_E.get()
-        if ManejoDeDatos.valid_reg(Usuario_n) == True:
-            messagebox.showinfo(tittle=None, message="El usuario, ya existe, por favor, cambielo.")
+        if User_n == "":
+            messagebox.showinfo(tittle=None, message="El usuario no puede ser vacio")
+        elif Password_n == "":
+            messagebox.showinfo(tittle=None, message="Por favor, ponga una contraseña")
+        elif ManejoDeDatos.val_empt_str_aux(User_n, " ", len(User_n), 0):
+            messagebox.showinfo(tittle=None, message="El usuario no puede ser vacio!")
+        elif ManejoDeDatos.val_empt_str_aux(Password_n, " ", len(Password_n), 0):
+            messagebox.showinfo(tittle=None, message="El usuario no puede ser vacio!")
+        elif ManejoDeDatos.valid_reg(User_n) == True:
+            messagebox.showinfo(tittle=None, message="El usuario, ya existe, por favor cambielo.")
         else:
             messagebox.showinfo(tittle=None, message="Usuario Registrado")
-            return ManejoDeDatos.reg_user(Usuario_n, Password_n)
+            back()
+            return ManejoDeDatos.reg_user(User_n, Password_n)
 
     def back():
         Registro_C.place_forget()

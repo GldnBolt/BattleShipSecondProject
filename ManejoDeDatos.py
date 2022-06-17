@@ -53,5 +53,13 @@ def reg_user_aux(File, Users_Data):
         File.write(str(Users_Data[1])+"\n")
         return reg_user_aux(File, Users_Data[2:])
 
+def val_empt_str_aux(Str, Str2, n , i):
+    if i == n:
+        return False
+    elif Str == Str2:
+        return True
+    else:
+        return val_empt_str_aux(Str, Str2+" ", n, i+1)
+
 
 
