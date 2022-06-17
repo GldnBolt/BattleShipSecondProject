@@ -2,18 +2,21 @@ def log_in(Usuario, Password):
     Users = open("Files\LogIn_Data.txt", 'r')
     Users_Data = load_users(Users, [])
     Users.close()
+    print(Users_Data)
     if Usuario in Users_Data:
-        Index = Users_Data.index(Usuario) 
+        Index = Users_Data.index(Usuario)
         if Users_Data[Index + 1] == Password:
-            return True
-        else:
+            print(Password, Users_Data[Index + 1])
             return 1
+        else:
+            return 2
     else:
-        return 0
+        return 3
 
 
 def load_users(File, List):
     User = File.readline()[:-1]
+    print(User)
     if User == "Final":
         return List
     else:
@@ -22,6 +25,25 @@ def load_users(File, List):
         List.append(Password)
         return load_users(File, List)
 
+def reg_user(User, Password):
+    print(User, Password)
+    Users = open("Files\LogIn_Data.txt", 'r')
+    Users_Data = load_users(Users, [])
+    Users.close()
+    Users_Data.append(User)
+    Users_Data.append(Password)
+    Users = open("Files\LogIn_Data.txt", 'w')
+    reg_user_aux(Users, Users_Data)
+    Users.close()
+
+def reg_user_aux(File, Users_Data):
+    if Users_Data == []:
+        File.write(str("Final "))
+        return
+    else:
+        File.write(str(Users_Data[0])+"\n")
+        File.write(str(Users_Data[1])+"\n")
+        return reg_user_aux(File, Users_Data[2:])
 
 
 

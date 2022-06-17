@@ -1,5 +1,6 @@
 import pygame, sys
 import tkinter as tk
+from tkinter import messagebox
 import math 
 import glob
 import os
@@ -24,12 +25,7 @@ import ManejoDeDatos, Saves
     *************************************************************************************
 
 """
-
-
-hola = Saves.read_game()
-print(hola)
-
-
+ManejoDeDatos.reg_user("Idiota", "1234")
 
 #Globales
 
@@ -119,6 +115,19 @@ password_entry.place(x=950, y=600, anchor = "center")
 
 
 #Funciones
+def val_usuario():
+    User = User_entry.get()
+    Password = password_entry.get()
+    print(User, Password)
+    Val = ManejoDeDatos.log_in(User, Password)
+    print(Val)
+    if Val== 1:
+        dif_screen()
+    elif Val == 2:
+        messagebox.showinfo(tittle=None, message="Contraseña Incorrecta")
+    else:
+        messagebox.showinfo(tittle=None, message="Usuario no existe")
+
 def help_screen():
     Inicio_C.place_forget()
     Register.place_forget()
@@ -269,7 +278,7 @@ def Exit():
 ##########################################################################################
 
 #Botones
-Log_In = tk.Button(Inicio_C, text ="Log In", font = font_dfcltd, width = 10, height = 2, activebackground ="white", bg ="gray", fg ="white", command = dif_screen)
+Log_In = tk.Button(Inicio_C, text ="Log In", font = font_dfcltd, width = 10, height = 2, activebackground ="white", bg ="gray", fg ="white", command = val_usuario)
 Log_In.place(x = 550, y = 800, anchor = "center")
 
 Register = tk.Button(Inicio_C, text ="Register", font = font_register, width = 10, height = 2, activebackground ="white", bg ="gray", fg ="white", command=reg_screen)
