@@ -66,6 +66,7 @@ Computer_Grid_C = tk.Canvas(Juego_C, width=500, height=500, bg="Gray", bd=0)
 #Imagen de registro
 Reg_image = tk.PhotoImage(file = "Images\Bg\Register_bg.png")
 Registro_C.create_image(750,500, image = Reg_image)
+
 #Imagen de About
 About_Image = tk.PhotoImage(file = "Images\Bg\About_image.png")
 About_C.create_image(750, 500, image = About_Image)
@@ -81,6 +82,10 @@ Inicio_C.create_image(750, 300, image = Logo)
 #Imagen de Help
 Help_image = tk.PhotoImage(file = "Images\Bg\Help_image.png")
 Help_C.create_image(750,500, image = Help_image)
+
+#Imagen de salon de la fama
+Podio_image = tk.PhotoImage(file = "Images\Bg\podio.png")
+Puntajes_C.create_image(750, 500, image = Podio_image)
 
 #Area de Juego
 Game_Board_Img = tk.PhotoImage(file = "Images\Bg\GameBoard.png")
@@ -294,6 +299,30 @@ def play_screen():
 
 def Exit():
     window.destroy()
+
+def puntajes():
+    Inicio_C.place_forget()
+    Register.place_forget()
+    Boton_Puntajes.place_forget()
+    Boton_About.place_forget()
+    Boton_Exit.place_forget()
+    Puntajes_C.place(x=0, y=0)
+    Puntajes_C.focus_force()
+
+    def back():
+        Puntajes_C.place_forget()
+        Inicio_C.place(x=0, y=0)
+        Log_In.place(x = 550, y = 800, anchor = "center")
+        Register.place(x=950, y=800, anchor="center")
+        Boton_Puntajes.place(x=1500, y=1000, anchor = "se")
+        Boton_About.place(x=1500, y=0, anchor = "ne")
+        Boton_Exit.place(x=0, y=0, anchor = "nw")
+
+    btn_back = tk.Button(Puntajes_C, text ="Back", width=5, height=2, font = font_user, command = back)
+    btn_back.place(x=1500,y=0, anchor = "ne")
+
+
+    
 ##########################################################################################
 
 #Botones
@@ -303,7 +332,7 @@ Log_In.place(x = 550, y = 800, anchor = "center")
 Register = tk.Button(Inicio_C, text ="Register", font = font_register, width = 10, height = 2, activebackground ="white", bg ="gray", fg ="white", command=reg_screen)
 Register.place(x = 950, y = 800, anchor = "center")
 
-Boton_Puntajes = tk.Button(Inicio_C, text ="PUNTAJES", font=('Courier', 18, 'bold'))
+Boton_Puntajes = tk.Button(Inicio_C, text ="PUNTAJES", font=('Courier', 18, 'bold'), command = puntajes)
 Boton_Puntajes.place(x=1500, y=1000, anchor = "se")
 
 Boton_About = tk.Button(Inicio_C, text ="ABOUT", font=('Courier', 18, 'bold'), command = about_screen)
